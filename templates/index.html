@@ -1,0 +1,78 @@
+<!-- Template for input page -->
+<head><title>Navigate Mars Rovers</title></head>
+
+<script>
+
+var count = 1;
+
+function addQuestion()
+{
+    // Get the form element
+    var rover = document.getElementById('test');
+
+    if (rover)
+    {
+        // Create a new <p> element
+        var newP = document.createElement('p');
+        newP.innerHTML = '<b>Rover ' + (count + 1) + '</b>';
+
+	    // Create the new label
+        var newLabel1 = document.createElement('label');
+        newLabel1.for = 'Rover ' + (count + 1) + ' State';
+        newLabel1.innerHTML = 'Initial State: ';
+
+        // Create the new text box
+        var newInput1 = document.createElement('input');
+        newInput1.type = 'text';
+        newInput1.name = 'Rover ' + (count + 1) + ' State';
+	    newInput1.placeholder = "eg. 1 1 N"
+
+	    // Create the new label
+        var newLabel2 = document.createElement('label');
+        newLabel2.for = 'Rover ' + (count + 1) + ' Command';
+        newLabel2.innerHTML = ' Command: ';
+
+	    // Create the new text box
+        var newInput2 = document.createElement('input');
+        newInput2.type = 'text';
+        newInput2.name = 'Rover ' + (count + 1) + ' Command';
+	    newInput2.placeholder = "eg. LMLMRM"
+
+
+        // Error checking
+        if (newInput1 && newLabel1 && newInput2 && newLabel2 && newP)
+        {
+            // Add the new elements to the form
+            rover.appendChild(newP);
+	        rover.appendChild(newLabel1);
+            rover.appendChild(newInput1);
+		    rover.appendChild(newLabel2);
+            rover.appendChild(newInput2);
+            // Increment the count
+            count++;
+        }
+    }
+}
+
+</script>
+
+<form id="rovers" action="" method="POST">
+    <H1><center>Navigate Mars Rovers</center> </H1>
+    <br>
+    <div id="test">
+        <label for="Upper-Right Coordinate"><b>Plateau Upper-Right Coordinates:</b></label>
+        <input type="text" id = "Upper-Right Coordinate" name="Upper-Right Coordinate" placeholder = "eg. 5 5"/><br>
+
+        <p><b>Rover 1</b></p>
+        <label for="Rover 1 State">Initial State:</label>
+        <input type="text" name="Rover 1 State"  placeholder = "eg. 1 1 N"/>
+        <label for="Rover 1 Command">Command:</label>
+        <input type="text" name="Rover 1 Command" placeholder = "eg. LMLMRM"/>
+    </div>
+
+    <br>
+    <input type="button" value="Add Rover" onclick="javascript: addQuestion();"/><br><br>
+
+    <input type = "submit" value="Submit" style="width: 150px; margin: 0 auto;"><br><br>
+
+</form>
